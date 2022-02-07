@@ -8,15 +8,18 @@
         placeholder="URL"
     />
     <button @click="createQR()" :disabled="!url">Generate</button>
+    <img :src=picture alt="QR-code picture">
   </div>
 </template>
 
 <script>
+  const api_url = "https://api.qrserver.com/v1/create-qr-code/?";
   export default {
     name: 'URL_input',
     data() {
       return {
-        url: ""
+        url: "",
+        picture: ""
       }
     },
     methods: {
@@ -25,6 +28,8 @@
           return
         }
         console.log(this.url)
+        this.picture = api_url + "data=" + this.url
+        console.log(this.picture);
       }
     }
   };
