@@ -4,18 +4,27 @@
         class="input"
         type="text"
         v-model="url"
-        @keydown.enter="createQR(url)"
+        @keydown.enter="createQR()"
         placeholder="URL"
     />
+    <button @click="createQR()">Generate</button>
   </div>
 </template>
 
 <script>
   export default {
     name: 'URL_input',
+    data() {
+      return {
+        url: ""
+      }
+    },
     methods: {
-      createQR(url) {
-        console.log(url)
+      createQR() {
+        if (this.url === "") {
+          return
+        }
+        console.log(this.url)
       }
     }
   };
@@ -31,4 +40,15 @@ input {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+
+button {
+  border: none;
+  cursor: pointer;
+  background-color: #04aa6d;
+  color: white;
+  padding: 7px 10px;
+  margin: 4px 0;
+  width: 70px;
+}
+
 </style>
