@@ -12,7 +12,7 @@
 
 <script>
   export default {
-    name: 'HelloWorld',
+    name: 'URL_input',
     methods: {
       createQR(url) {
         console.log(url)
