@@ -1,21 +1,33 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>QR generator</h1>
+    <URL_input/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/URL.vue'
+import URL_input from './components/URL.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    URL_input
   }
 }
 </script>
 
 <style>
+
+h1 {
+  color: #111;
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 70px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
