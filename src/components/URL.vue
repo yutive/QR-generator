@@ -1,5 +1,6 @@
 <template>
-  <div class="url_input">
+  <div class="url">
+    <img :src=picture width="250px" alt="QR-code picture">
     <input
         class="input"
         type="text"
@@ -7,15 +8,16 @@
         @keydown.enter="createQR()"
         placeholder="URL"
     />
-    <button @click="createQR()" :disabled="!url">Generate</button>
-    <img :src=picture alt="QR-code picture">
+    <button @click="createQR()" :disabled="!url">
+      Generate
+    </button>
   </div>
 </template>
 
 <script>
   const api_url = "https://api.qrserver.com/v1/create-qr-code/?";
   export default {
-    name: 'URL_input',
+    name: 'urlToPic',
     data() {
       return {
         url: "",
