@@ -1,24 +1,12 @@
-# qr_generator
+<img alt="Logo Bild" src="./Resources/QR_Logo.png" width=200px>
 
-## Project setup
-```
-npm install
-```
+## Projektbeschreibung
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Wir bearbeiten dieses Projekt während der [ZLI](https://www.zli.ch/) Winter Codeweek. Uns kam die Idee das wir eine App programmieren wollen bei der man QR codes generieren kann. Diese QR codes möchten wir mit einer gratis [API](https://goqr.me/api/) machen. Um diese API benutzen zu können wollen wir ein schönes Frontend programmieren um den zugriff zu vereingachen.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Eingesetzte API
+- [QR code API](https://goqr.me/api/)
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Teammitglieder
+- [Yannis](https://github.com/yanniskuenzler)
+- [Laurin](https://github.com/yutive)
