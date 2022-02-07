@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <h1>QR generator</h1>
-    <URL_input/>
+    <urlToPic/>
   </div>
 </template>
 
 <script>
-import URL_input from './components/URL.vue'
+import urlToPic from './components/URL.vue'
 
 export default {
   name: 'App',
   components: {
-    URL_input
+    urlToPic: urlToPic
   }
 }
 </script>
