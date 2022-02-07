@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <img alt="Logo Bild" src="./Resources/QR_Logo.png" width=200px>
 
 ## Projektbeschreibung
@@ -10,3 +11,6 @@ Wir bearbeiten dieses Projekt während der [ZLI](https://www.zli.ch/) Winter Cod
 ## Teammitglieder
 - [Yannis](https://github.com/yanniskuenzler)
 - [Laurin](https://github.com/yutive)
+=======
+# QR-generator
+>>>>>>> eb44cae (Initial commit)
