@@ -7,7 +7,7 @@
         @keydown.enter="createQR()"
         placeholder="URL"
     />
-    <button @click="createQR()">Generate</button>
+    <button @click="createQR()" :disabled="!url">Generate</button>
   </div>
 </template>
 
@@ -32,6 +32,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 input {
   width: 45%;
   padding: 6px 10px;
@@ -50,5 +51,12 @@ button {
   margin: 4px 0;
   width: 70px;
 }
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
 
+button:hover {
+  opacity: 0.8;
+}
 </style>
