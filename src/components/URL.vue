@@ -27,9 +27,7 @@
         if (this.url === "") {
           return
         }
-        console.log(this.url)
-        this.picture = api_url + "data=" + this.url
-        console.log(this.picture);
+        this.picture = api_url + "data=" + this.url;
       }
     }
   };
