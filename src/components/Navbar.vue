@@ -4,7 +4,6 @@
       <button @click="$emit('change', 'generate')">Generate</button>
     </li>
     <li>
-
       <button @click="$emit('change', 'read')">Read</button>
     </li>
     <li>
@@ -34,17 +33,8 @@ export default {
     margin: 4px 0;
     width: auto;
   }
-  li:hover:not(input){
+  li:hover {
     opacity: 0.8;
-
-  }
-
-  ul input {
-    opacity: 0;
-    width: 0;
-    margin: 0;
-    border: 0;
-    height: 0;
   }
 
 </style>
