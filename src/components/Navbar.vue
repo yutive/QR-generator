@@ -1,8 +1,36 @@
 <template>
   <ul>
-    <li><label for="generate">Generate</label><input type="radio" @change="onChange($event)" value="generate" name="menu_switch" id="generate"></li>
-    <li><label for="read">Read</label><input type="radio" @change="onChange($event)" value="read" name="menu_switch" id="read"></li>
-    <li><label for="about">About</label><input type="radio" @change="onChange($event)" value="about" name="menu_switch" id="about"></li>
+    <li>
+      <label for="generate">
+            Generate
+      </label>
+      <input type="radio"
+             @change="onChange($event)"
+             value="generate"
+             name="menu_switch"
+             id="generate">
+    </li>
+    <li>
+      <label for="read">
+        Read
+      </label>
+      <input
+          type="radio"
+          @change="onChange($event)"
+          value="read" name="menu_switch"
+          id="read">
+    </li>
+    <li>
+      <label for="about">
+        About
+      </label>
+      <input
+          type="radio"
+          @change="onChange($event)"
+          value="about"
+          name="menu_switch"
+          id="about">
+    </li>
   </ul>
 </template>
 
