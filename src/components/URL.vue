@@ -10,8 +10,15 @@
         placeholder="https://"
     />
     <div>
-      <a :href=picture>
-        <img :src=picture width="250px" alt="QR-code picture" v-if="Boolean(picture)">
+      <a :href=picture target="_blank">
+        <img
+            :src=picture
+             width="250px"
+             alt="QR-code picture"
+             v-if="Boolean(picture)"
+             id="qrCode"
+             title="Open in new tab"
+        >
       </a>
     </div>
 
@@ -53,6 +60,10 @@ h1 {
   letter-spacing: -1px;
   line-height: 1;
   text-align: center;
+}
+
+#qrCode {
+  cursor:pointer;
 }
 
 input {
