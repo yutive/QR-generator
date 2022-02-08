@@ -10,7 +10,9 @@
         placeholder="https://"
     />
     <div>
-      <img :src=picture width="250px" alt="QR-code picture" v-if="Boolean(picture)">
+      <a :href=picture>
+        <img :src=picture width="250px" alt="QR-code picture" v-if="Boolean(picture)">
+      </a>
     </div>
 
   </div>
