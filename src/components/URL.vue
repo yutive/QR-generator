@@ -27,7 +27,7 @@
 
 <script>
   const api_url = "https://api.qrserver.com/v1/create-qr-code/?";
-  const url_pattern = new RegExp(".+\.+");
+  const url_pattern = new RegExp("(.+\\.)+[a-z]");
   export default {
     name: 'urlToPic',
     data() {
