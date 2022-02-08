@@ -71,18 +71,25 @@
     list-style-type: none;
   }
 
-  ul input {
-    opacity: 0;
-  }
 
   li {
     padding: 5px;
     background-color: #04aa6d;
     color: white;
     display: block;
+    text-align: center;
+    height: 20px;
   }
   ul :hover {
     opacity: 80%;
+  }
+
+  ul input {
+    opacity: 0;
+    width: 0;
+    margin: 0;
+    border: 0;
+    height: 0;
   }
 
 </style>
