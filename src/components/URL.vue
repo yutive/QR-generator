@@ -1,6 +1,6 @@
 <template>
   <div class="url">
-    <h1>QR generator</h1>
+    <h2>QR generator</h2>
     <input
         class="input"
         type="text"
@@ -38,6 +38,7 @@
     methods: {
       createQR() {
           if (this.url === "") {
+            this.picture = false;
             return
           }
           this.picture = api_url + "data=" + this.url;
