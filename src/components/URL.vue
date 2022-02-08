@@ -1,6 +1,5 @@
 <template>
   <div class="url">
-    <img :src=picture width="250px" alt="QR-code picture" v-if="Boolean(picture)">
     <input
         class="input"
         type="text"
@@ -11,6 +10,11 @@
     <button @click="createQR()" :disabled="!url">
       Generate
     </button>
+
+    <div>
+      <img :src=picture width="250px" alt="QR-code picture" v-if="Boolean(picture)">
+    </div>
+
   </div>
 </template>
 
@@ -33,6 +37,8 @@
       }
     }
   };
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -63,5 +69,10 @@ button:disabled {
 
 button:hover {
   opacity: 0.8;
+}
+
+img {
+  align-items: center;
+  margin: 20px;
 }
 </style>

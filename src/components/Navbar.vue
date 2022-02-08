@@ -37,4 +37,8 @@ export default {
     opacity: 0.8;
   }
 
+  ul {
+    justify-content: center;
+  }
+
 </style>
