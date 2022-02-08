@@ -40,10 +40,12 @@
     data() {},
     methods: {
       onChange(event) {
-        //let generate, read, about = false;
+        let generate = false;
+        let read = false;
+        let about = false;
         let switch_data = event.target.value;
         console.log(switch_data);
-        /*switch (switch_data) {
+        switch (switch_data) {
           case "generate":
             generate = true;
             break;
@@ -54,8 +56,10 @@
             about = true;
             break;
         }
-        console.log(generate + read + about);
-        */
+        console.log(generate);
+        console.log(read);
+        console.log(about);
+
 
       }
     }
