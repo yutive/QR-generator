@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <navbar/>
     <h1>QR generator</h1>
     <urlToPic/>
   </div>
@@ -7,11 +8,13 @@
 
 <script>
 import urlToPic from './components/URL.vue'
+import navbar from './components/Navbar.vue'
 
 export default {
   name: 'App',
   components: {
-    urlToPic: urlToPic
+    urlToPic: urlToPic,
+    navbar
   }
 }
 </script>
