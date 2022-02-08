@@ -10,3 +10,4 @@ Wir bearbeiten dieses Projekt während der [ZLI](https://www.zli.ch/) Winter Cod
 ## Teammitglieder
 - [Yannis](https://github.com/yanniskuenzler)
 - [Laurin](https://github.com/yutive)
+- [Lorenz](https://github.com/Lorenzmueller2)
