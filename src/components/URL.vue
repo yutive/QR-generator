@@ -1,6 +1,6 @@
 <template>
   <div class="url">
-    <img :src=picture width="250px" alt="QR-code picture">
+    <img :src=picture width="250px" alt="QR-code picture" v-if="Boolean(picture)">
     <input
         class="input"
         type="text"
