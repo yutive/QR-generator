@@ -5,6 +5,7 @@
         type="text"
         v-model="url"
         @keydown.enter="createQR()"
+        @input="createQR()"
         placeholder="URL"
     />
     <button @click="createQR()" :disabled="!url">
@@ -30,10 +31,11 @@
     },
     methods: {
       createQR() {
-        if (this.url === "") {
-          return
-        }
-        this.picture = api_url + "data=" + this.url;
+          if (this.url === "") {
+            return
+          }
+          this.picture = api_url + "data=" + this.url;
+          console.log("test");
       }
     }
   };
