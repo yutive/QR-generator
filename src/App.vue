@@ -1,14 +1,15 @@
 <template>
   <div id="app">
-    <navbar/>
+    <navbar id="nav" v-on:change="navigate"/>
     <h1>QR generator</h1>
-    <urlToPic/>
+    <urlToPic v-if="this.page==='generate'"/>
   </div>
 </template>
 
 <script>
 import urlToPic from './components/URL.vue'
 import navbar from './components/Navbar.vue'
+
 
 export default {
   name: 'App',
@@ -29,6 +30,10 @@ h1 {
   letter-spacing: -1px;
   line-height: 1;
   text-align: center;
+}
+
+#nav {
+  justify-content: center;
 }
 
 #app {

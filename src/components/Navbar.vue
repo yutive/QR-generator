@@ -1,24 +1,11 @@
 <template>
   <ul>
     <li>
-      <label for="generate">
-            Generate
-      </label>
-      <input type="radio"
-             @change="onChange($event)"
-             value="generate"
-             name="menu_switch"
-             id="generate">
+      <button @click="$emit('change', 'generate')">Generate</button>
     </li>
     <li>
-      <label for="read">
-        Read
-      </label>
-      <input
-          type="radio"
-          @change="onChange($event)"
-          value="read" name="menu_switch"
-          id="read">
+
+      <button @click="$emit('change', 'read')">Read</button>
     </li>
     <li>
       <label for="about">
@@ -35,33 +22,8 @@
 </template>
 
 <script>
-  export default {
-    name: "Navbar",
-    methods: {
-      onChange(event) {
-        let generate = false;
-        let read = false;
-        let about = false;
-        let switch_data = event.target.value;
-        console.log(switch_data);
-        switch (switch_data) {
-          case "generate":
-            generate = true;
-            break;
-          case "read":
-            read = true;
-            break;
-          case "about":
-            about = true;
-            break;
-        }
-        console.log(generate);
-        console.log(read);
-        console.log(about);
-
-
-      }
-    }
+export default {
+    name: "Navbar"
 }
 </script>
 
@@ -71,18 +33,14 @@
     list-style-type: none;
   }
 
-
-  li {
-    padding: 5px;
-    background-color: #04aa6d;
+  button  {
+    border: none;
+    cursor: pointer;
+    background: #04aa6d none;
     color: white;
-    display: block;
-    text-align: center;
-    height: 20px;
-  }
-
-  label {
-    display: block;
+    padding: 7px 10px;
+    margin: 4px 0;
+    width: auto;
   }
   li:hover:not(input){
     opacity: 0.8;
