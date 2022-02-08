@@ -27,6 +27,7 @@
 
 <script>
   const api_url = "https://api.qrserver.com/v1/create-qr-code/?";
+  const url_pattern = new RegExp(".+\.+");
   export default {
     name: 'urlToPic',
     data() {
@@ -41,8 +42,11 @@
             this.picture = false;
             return
           }
-          this.picture = api_url + "data=" + this.url;
-          console.log("test");
+          if(url_pattern.test(this.url)) {
+            this.picture = api_url + "data=" + this.url;
+          } else {
+            this.picture = false;
+          }
       }
     }
   };
