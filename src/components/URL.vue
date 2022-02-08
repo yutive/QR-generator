@@ -7,12 +7,8 @@
         v-model="url"
         @keydown.enter="createQR()"
         @input="createQR()"
-        placeholder="URL"
+        placeholder="https://"
     />
-    <button @click="createQR()" :disabled="!url">
-      Generate
-    </button>
-
     <div>
       <img :src=picture width="250px" alt="QR-code picture" v-if="Boolean(picture)">
     </div>
