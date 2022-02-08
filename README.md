@@ -8,5 +8,6 @@ Wir bearbeiten dieses Projekt während der [ZLI](https://www.zli.ch/) Winter Cod
 - [QR code API](https://goqr.me/api/)
 
 ## Teammitglieder
+- [Lorenz](https://github.com/Lorenzmueller2)
 - [Yannis](https://github.com/yanniskuenzler)
 - [Laurin](https://github.com/yutive)
