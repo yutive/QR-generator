@@ -37,7 +37,6 @@
 <script>
   export default {
     name: "Navbar",
-    data() {},
     methods: {
       onChange(event) {
         let generate = false;
@@ -82,8 +81,8 @@
     color: white;
     display: block;
   }
-  li :hover {
-    background-color: black;
+  ul :hover {
+    opacity: 80%;
   }
 
 </style>
