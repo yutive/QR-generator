@@ -80,8 +80,13 @@
     text-align: center;
     height: 20px;
   }
-  ul :hover {
-    opacity: 80%;
+
+  label {
+    display: block;
+  }
+  li:hover:not(input){
+    opacity: 0.8;
+
   }
 
   ul input {
