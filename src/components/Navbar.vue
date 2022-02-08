@@ -22,6 +22,7 @@ export default {
   ul {
     display: flex;
     list-style-type: none;
+    padding-left: 0;
   }
 
   button  {
