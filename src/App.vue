@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <navbar id="nav" v-on:change="navigate"/>
-    <h1>QR generator</h1>
     <urlToPic v-if="this.page==='generate'"/>
     <read v-if="this.page==='read'"/>
     <about v-if="this.page==='about'"/>
@@ -37,16 +36,6 @@ export default {
 </script>
 
 <style>
-
-h1 {
-  color: #111;
-  font-family: "Helvetica Neue", sans-serif;
-  font-size: 70px;
-  font-weight: bold;
-  letter-spacing: -1px;
-  line-height: 1;
-  text-align: center;
-}
 
 #nav {
   justify-content: center;

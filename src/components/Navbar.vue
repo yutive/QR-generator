@@ -1,15 +1,17 @@
 <template>
-  <ul>
-    <li>
-      <button @click="$emit('change', 'generate')">Generate</button>
-    </li>
-    <li>
-      <button @click="$emit('change', 'read')">Read</button>
-    </li>
-    <li>
-      <button @click="$emit('change', 'about')">About</button>
-    </li>
-  </ul>
+  <div>
+    <ul>
+      <li>
+        <button @click="$emit('change', 'generate')">Generate</button>
+      </li>
+      <li>
+        <button @click="$emit('change', 'read')">Read</button>
+      </li>
+      <li>
+        <button @click="$emit('change', 'about')">About</button>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -19,6 +21,7 @@ export default {
 </script>
 
 <style scoped>
+
   ul {
     display: flex;
     list-style-type: none;
