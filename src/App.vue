@@ -16,6 +16,16 @@ export default {
   components: {
     urlToPic: urlToPic,
     navbar
+  },
+  data() {
+    return {
+      page: "generate"
+    }
+  },
+  methods: {
+    navigate(page) {
+      this.page = page;
+    }
   }
 }
 </script>

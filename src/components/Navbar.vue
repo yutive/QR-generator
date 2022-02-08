@@ -8,15 +8,7 @@
       <button @click="$emit('change', 'read')">Read</button>
     </li>
     <li>
-      <label for="about">
-        About
-      </label>
-      <input
-          type="radio"
-          @change="onChange($event)"
-          value="about"
-          name="menu_switch"
-          id="about">
+      <button @click="$emit('change', 'about')">About</button>
     </li>
   </ul>
 </template>
