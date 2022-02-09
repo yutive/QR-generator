@@ -5,6 +5,7 @@
         class="input"
         type="text"
         v-model="url"
+        @keydown.enter="createQR()"
         @input="createQR()"
         placeholder="https://"
     />
