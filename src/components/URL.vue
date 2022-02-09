@@ -9,46 +9,21 @@
         @input="createQR()"
         placeholder="https://"
     />
-    <div class="lowerFlex" v-if="Boolean(picture)">
+    <div class="lowerFlex">
       <div class="options">
         <form>
-          <input
-              type="color"
-              name="options"
-              id="color"
-              v-model="color"
-              @change="createQR()"
-          >
-          <label for="color">Farbe</label><br><br>
-          <input
-              type="radio"
-              name="dataTypes"
-              id="png"
-              value="png"
-              @change="createQR()"
-              checked
-          >
-          <label for="png">PNG</label><br>
-          <input
-              type="radio"
-              name="dataTypes"
-              id="jpg"
-              value="jpg"
-              @change="createQR()"
-          >
-          <label for="jpg">JPG</label><br>
-          <input
-              type="radio"
-              name="dataTypes"
-              id="svg"
-              value="svg"
-              @change="createQR()"
-          >
-          <label for="svg">SVG</label>
+          <input type="color" name="options" id="color" @change="addOptions($event)" v-if="picture">
+          <label for="color" v-if="picture">Farbe</label><br><br>
+          <input type="radio" name="options" id="png" @change="addOptions($event)" v-if="picture">
+          <label for="png" v-if="picture">PNG</label><br>
+          <input type="radio" name="options" id="jpg" @change="addOptions($event)" v-if="picture">
+          <label for="jpg" v-if="picture">JPG</label><br>
+          <input type="radio" name="options" id="svg" @change="addOptions($event)" v-if="picture">
+          <label for="svg" v-if="picture">SVG</label>
         </form>
       </div>
-      <div class="qr-code">
-        <a :href=picture target="_blank">
+      <div class="qr-code" v-if="picture">
+        <a :href=picture target="_blank" >
           <img
               :src=picture
               width="250px"
@@ -60,40 +35,36 @@
       </div>
     </div>
 
+
   </div>
 </template>
 
 <script>
-  const api_url = "https://api.qrserver.com/v1/create-qr-code/?margin=0&";
-  export default {
-    name: 'urlToPic',
-    data() {
-      return {
-        url: "",
-        picture: "",
-        color: ""
-      }
-    },
-    methods: {
-      createQR() {
-        if (this.url === "") {
-          this.picture = false;
-          return
-        }
-
-        this.picture = `${api_url}color=${this.color.substring(1)}&data=${this.url}`;
-
-        localStorage.setItem("url", this.url);
-
-      }
-    },
-    created() {
-      this.url = localStorage.getItem("url");
-      this.createQR();
+const api_url = "https://api.qrserver.com/v1/create-qr-code/?margin=0&";
+export default {
+  name: 'urlToPic',
+  data() {
+    return {
+      url: "",
+      picture: ""
     }
-  };
+  },
+  methods: {
+    createQR() {
+      if (this.url === "") {
+        this.picture = false;
+        return
+      }
+      this.picture = api_url + "data=" + this.url;
+      window.urlState = this.url;
+    }
+  },
+  created() {
+    this.url = window.urlState || "";
+    this.createQR();
+  }
 
-
+};
 
 
 </script>
@@ -112,7 +83,7 @@ h1 {
 }
 
 #qrCode {
-  cursor:pointer;
+  cursor: pointer;
   margin: 0;
 }
 
@@ -134,6 +105,7 @@ button {
   margin: 4px 0;
   width: 70px;
 }
+
 button:disabled {
   cursor: not-allowed;
   opacity: 0.8;
@@ -160,7 +132,6 @@ img {
 
 .lowerFlex {
   display: flex;
-  justify-content: center;
-  ;
+  justify-content: center;;
 }
 </style>
