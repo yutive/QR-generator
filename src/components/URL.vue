@@ -12,14 +12,14 @@
     <div class="lowerFlex">
       <div class="options">
         <form>
-          <input type="color" name="options" id="color" @change="addOptions($event)">
-          <label for="color">Farbe</label><br><br>
-          <input type="radio" name="options" id="png" @change="addOptions($event)">
-          <label for="png">PNG</label><br>
-          <input type="radio" name="options" id="jpg" @change="addOptions($event)">
-          <label for="jpg">JPG</label><br>
-          <input type="radio" name="options" id="svg" @change="addOptions($event)">
-          <label for="svg">SVG</label>
+          <input type="color" name="options" id="color" @change="addOptions($event)" v-if="picture">
+          <label for="color" v-if="picture">Farbe</label><br><br>
+          <input type="radio" name="options" id="png" @change="addOptions($event)" v-if="picture">
+          <label for="png" v-if="picture">PNG</label><br>
+          <input type="radio" name="options" id="jpg" @change="addOptions($event)" v-if="picture">
+          <label for="jpg" v-if="picture">JPG</label><br>
+          <input type="radio" name="options" id="svg" @change="addOptions($event)" v-if="picture">
+          <label for="svg" v-if="picture">SVG</label>
         </form>
       </div>
       <div class="qr-code" v-if="picture">
