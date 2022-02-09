@@ -9,41 +9,16 @@
         @input="createQR()"
         placeholder="https://"
     />
-    <div class="lowerFlex" v-if="Boolean(picture)">
+    <div class="lowerFlex">
       <div class="options">
         <form>
-          <input
-              type="color"
-              name="options"
-              id="color"
-              v-model="color"
-              @change="createQR()"
-          >
+          <input type="color" name="options" id="color" @change="addOptions($event)">
           <label for="color">Farbe</label><br><br>
-          <input
-              type="radio"
-              name="dataTypes"
-              id="png"
-              value="png"
-              @change="createQR()"
-              checked
-          >
+          <input type="radio" name="options" id="png" @change="addOptions($event)">
           <label for="png">PNG</label><br>
-          <input
-              type="radio"
-              name="dataTypes"
-              id="jpg"
-              value="jpg"
-              @change="createQR()"
-          >
+          <input type="radio" name="options" id="jpg" @change="addOptions($event)">
           <label for="jpg">JPG</label><br>
-          <input
-              type="radio"
-              name="dataTypes"
-              id="svg"
-              value="svg"
-              @change="createQR()"
-          >
+          <input type="radio" name="options" id="svg" @change="addOptions($event)">
           <label for="svg">SVG</label>
         </form>
       </div>
@@ -53,12 +28,14 @@
               :src=picture
               width="250px"
               alt="QR-code picture"
+              v-if="Boolean(picture)"
               id="qrCode"
               title="Open in new tab"
           >
         </a>
       </div>
     </div>
+
 
   </div>
 </template>
@@ -70,21 +47,17 @@
     data() {
       return {
         url: "",
-        picture: "",
-        color: ""
+        picture: ""
       }
     },
     methods: {
       createQR() {
-        if (this.url === "") {
-          this.picture = false;
-          return
-        }
-
-        this.picture = `${api_url}color=${this.color.substring(1)}&data=${this.url}`;
-
-        localStorage.setItem("url", this.url);
-
+          if (this.url === "") {
+            this.picture = false;
+            return
+          }
+          this.picture = api_url + "data=" + this.url;
+          localStorage.setItem("url", this.url);
       }
     },
     created() {
