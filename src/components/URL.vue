@@ -10,20 +10,41 @@
         placeholder="https://"
     />
     <div class="lowerFlex">
-      <div class="options">
+      <div class="options" v-if="picture">
         <form>
-          <input type="color" name="options" id="color" @change="addOptions($event)" v-if="picture">
-          <label for="color" v-if="picture">Farbe</label><br><br>
-          <input type="radio" name="options" id="png" @change="addOptions($event)" v-if="picture">
-          <label for="png" v-if="picture">PNG</label><br>
-          <input type="radio" name="options" id="jpg" @change="addOptions($event)" v-if="picture">
-          <label for="jpg" v-if="picture">JPG</label><br>
-          <input type="radio" name="options" id="svg" @change="addOptions($event)" v-if="picture">
-          <label for="svg" v-if="picture">SVG</label>
+          <input
+              type="color"
+              v-model="color"
+              name="color"
+              id="color"
+              @change="createQR()"
+          >
+          <label for="color">Farbe</label><br><br>
+          <input
+              type="radio"
+              name="options"
+              id="png"
+              @change="createQR()"
+          >
+          <label for="png">PNG</label><br>
+          <input
+              type="radio"
+              name="options"
+              id="jpg"
+              @change="createQR()"
+          >
+          <label for="jpg">JPG</label><br>
+          <input
+              type="radio"
+              name="options"
+              id="svg"
+              @change="createQR()"
+          >
+          <label for="svg">SVG</label>
         </form>
       </div>
       <div class="qr-code" v-if="picture">
-        <a :href=picture target="_blank" >
+        <a :href=picture target="_blank">
           <img
               :src=picture
               width="250px"
@@ -46,7 +67,8 @@ export default {
   data() {
     return {
       url: "",
-      picture: ""
+      picture: "",
+      color: ""
     }
   },
   methods: {
@@ -55,7 +77,7 @@ export default {
         this.picture = false;
         return
       }
-      this.picture = api_url + "data=" + this.url;
+      this.picture = `${api_url}data=${this.url}&color=${this.color.substring(1)}`;
       window.urlState = this.url;
     }
   },
