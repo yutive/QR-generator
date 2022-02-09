@@ -35,7 +35,7 @@ export default {
     color: white;
     padding: 7px 10px;
     margin: 4px 0;
-    width: auto;
+    width: 70px;
   }
   li:hover {
     opacity: 0.8;
