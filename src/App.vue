@@ -37,6 +37,13 @@ export default {
 
 <style>
 
+html  {
+  overflow: hidden;
+}
+body {
+  overflow: hidden;
+}
+
 #nav {
   justify-content: center;
 }
