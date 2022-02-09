@@ -16,6 +16,7 @@
               type="color"
               name="options"
               id="color"
+              v-model="color"
               @change="createQR()"
           >
           <label for="color">Farbe</label><br><br>
@@ -24,7 +25,8 @@
               name="dataTypes"
               id="png"
               value="png"
-              @change="createQR($event)"
+              @change="createQR()"
+              checked
           >
           <label for="png">PNG</label><br>
           <input
@@ -32,7 +34,7 @@
               name="dataTypes"
               id="jpg"
               value="jpg"
-              @change="createQR($event)"
+              @change="createQR()"
           >
           <label for="jpg">JPG</label><br>
           <input
@@ -40,7 +42,7 @@
               name="dataTypes"
               id="svg"
               value="svg"
-              @change="createQR($event)"
+              @change="createQR()"
           >
           <label for="svg">SVG</label>
         </form>
@@ -58,7 +60,6 @@
       </div>
     </div>
 
-
   </div>
 </template>
 
@@ -70,23 +71,19 @@
       return {
         url: "",
         picture: "",
+        color: ""
       }
     },
     methods: {
-      createQR(event = "") {
-          if (this.url === "") {
-            this.picture = false;
-            return
-          }
-          this.picture = api_url + "data=" + this.url;
+      createQR() {
+        if (this.url === "") {
+          this.picture = false;
+          return
+        }
 
+        this.picture = `${api_url}color=${this.color.substring(1)}&data=${this.url}`;
 
-          let optionColor = document.getElementById('color').value;
-          console.log(optionColor);
-          let optionDataTypes = event.target.value;
-          console.log(optionDataTypes);
-
-          localStorage.setItem("url", this.url);
+        localStorage.setItem("url", this.url);
 
       }
     },
