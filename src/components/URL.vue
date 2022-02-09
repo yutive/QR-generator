@@ -9,16 +9,39 @@
         @input="createQR()"
         placeholder="https://"
     />
-    <div class="lowerFlex">
+    <div class="lowerFlex" v-if="Boolean(picture)">
       <div class="options">
         <form>
-          <input type="color" name="options" id="color" @change="addOptions($event)">
+          <input
+              type="color"
+              name="options"
+              id="color"
+              @change="createQR()"
+          >
           <label for="color">Farbe</label><br><br>
-          <input type="radio" name="options" id="png" @change="addOptions($event)">
+          <input
+              type="radio"
+              name="dataTypes"
+              id="png"
+              value="png"
+              @change="createQR()"
+          >
           <label for="png">PNG</label><br>
-          <input type="radio" name="options" id="jpg" @change="addOptions($event)">
+          <input
+              type="radio"
+              name="dataTypes"
+              id="jpg"
+              value="jpg"
+              @change="createQR()"
+          >
           <label for="jpg">JPG</label><br>
-          <input type="radio" name="options" id="svg" @change="addOptions($event)">
+          <input
+              type="radio"
+              name="dataTypes"
+              id="svg"
+              value="svg"
+              @change="createQR()"
+          >
           <label for="svg">SVG</label>
         </form>
       </div>
@@ -28,7 +51,6 @@
               :src=picture
               width="250px"
               alt="QR-code picture"
-              v-if="Boolean(picture)"
               id="qrCode"
               title="Open in new tab"
           >
@@ -57,7 +79,14 @@
             return
           }
           this.picture = api_url + "data=" + this.url;
+
+          let optionColor = document.getElementById('color');
+          console.log(optionColor.value);
+          let optionDataTypes = document.getElementsByName('dataTypes');
+          console.log(optionDataTypes.value);
+
           localStorage.setItem("url", this.url);
+
       }
     },
     created() {
