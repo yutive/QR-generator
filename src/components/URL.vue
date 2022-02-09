@@ -24,7 +24,7 @@
               name="dataTypes"
               id="png"
               value="png"
-              @change="createQR()"
+              @change="createQR($event)"
           >
           <label for="png">PNG</label><br>
           <input
@@ -32,7 +32,7 @@
               name="dataTypes"
               id="jpg"
               value="jpg"
-              @change="createQR()"
+              @change="createQR($event)"
           >
           <label for="jpg">JPG</label><br>
           <input
@@ -40,7 +40,7 @@
               name="dataTypes"
               id="svg"
               value="svg"
-              @change="createQR()"
+              @change="createQR($event)"
           >
           <label for="svg">SVG</label>
         </form>
@@ -69,21 +69,22 @@
     data() {
       return {
         url: "",
-        picture: ""
+        picture: "",
       }
     },
     methods: {
-      createQR() {
+      createQR(event = "") {
           if (this.url === "") {
             this.picture = false;
             return
           }
           this.picture = api_url + "data=" + this.url;
 
-          let optionColor = document.getElementById('color');
-          console.log(optionColor.value);
-          let optionDataTypes = document.getElementsByName('dataTypes');
-          console.log(optionDataTypes.value);
+
+          let optionColor = document.getElementById('color').value;
+          console.log(optionColor);
+          let optionDataTypes = event.target.value;
+          console.log(optionDataTypes);
 
           localStorage.setItem("url", this.url);
 
