@@ -42,10 +42,16 @@
             return
           }
           this.picture = api_url + "data=" + this.url;
-
-          }
+          localStorage.setItem("url", this.url);
       }
+    },
+    created() {
+      this.url = localStorage.getItem("url");
+      this.createQR();
+    }
   };
+
+
 
 
 </script>
