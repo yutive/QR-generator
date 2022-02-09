@@ -22,13 +22,12 @@
           <label for="svg">SVG</label>
         </form>
       </div>
-      <div class="qr-code">
-        <a :href=picture target="_blank">
+      <div class="qr-code" v-if="picture">
+        <a :href=picture target="_blank" >
           <img
               :src=picture
               width="250px"
               alt="QR-code picture"
-              v-if="Boolean(picture)"
               id="qrCode"
               title="Open in new tab"
           >
@@ -41,32 +40,31 @@
 </template>
 
 <script>
-  const api_url = "https://api.qrserver.com/v1/create-qr-code/?margin=0&";
-  export default {
-    name: 'urlToPic',
-    data() {
-      return {
-        url: "",
-        picture: ""
-      }
-    },
-    methods: {
-      createQR() {
-          if (this.url === "") {
-            this.picture = false;
-            return
-          }
-          this.picture = api_url + "data=" + this.url;
-          localStorage.setItem("url", this.url);
-      }
-    },
-    created() {
-      this.url = localStorage.getItem("url");
-      this.createQR();
+const api_url = "https://api.qrserver.com/v1/create-qr-code/?margin=0&";
+export default {
+  name: 'urlToPic',
+  data() {
+    return {
+      url: "",
+      picture: ""
     }
-  };
+  },
+  methods: {
+    createQR() {
+      if (this.url === "") {
+        this.picture = false;
+        return
+      }
+      this.picture = api_url + "data=" + this.url;
+      window.urlState = this.url;
+    }
+  },
+  created() {
+      this.url = window.urlState || "";
+      this.createQR();
+  }
 
-
+};
 
 
 </script>
@@ -85,7 +83,7 @@ h1 {
 }
 
 #qrCode {
-  cursor:pointer;
+  cursor: pointer;
   margin: 0;
 }
 
@@ -107,6 +105,7 @@ button {
   margin: 4px 0;
   width: 70px;
 }
+
 button:disabled {
   cursor: not-allowed;
   opacity: 0.8;
@@ -133,7 +132,6 @@ img {
 
 .lowerFlex {
   display: flex;
-  justify-content: center;
-  ;
+  justify-content: center;;
 }
 </style>
