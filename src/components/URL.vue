@@ -89,16 +89,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-
-
 h1 {
-  color: #111;
-  font-family: "Helvetica Neue", sans-serif;
-  font-size: 70px;
-  font-weight: bold;
-  letter-spacing: -1px;
-  line-height: 1;
-  text-align: center;
+  margin-top:71.44px;
 }
 
 #qrCode {

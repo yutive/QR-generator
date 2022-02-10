@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>QR-read</h2>
+    <h1>QR-read</h1>
       <p>Choose QR code image to read/scan:</p>
       <input
           type="file"
@@ -72,6 +72,10 @@ export default {
 <style scoped>
 img.preview {
   width: 200px;
+}
+
+h1 {
+  margin-top:71.44px;
 }
 
 input {
