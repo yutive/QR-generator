@@ -164,6 +164,8 @@ img {
 
 .lowerFlex {
   display: flex;
-  justify-content: center;;
+  justify-content: center;
+  margin: 40px;
+  padding-top: 30px;
 }
 </style>

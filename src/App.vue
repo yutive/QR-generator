@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <navbar id="nav" v-on:change="navigate"/>
+    <p>
+      <navbar id="nav" v-on:change="navigate"/>
+    </p>
     <urlToPic v-if="this.page==='generate'"/>
     <read v-if="this.page==='read'"/>
     <about v-if="this.page==='about'"/>
@@ -42,6 +44,9 @@ html  {
 }
 body {
   overflow: hidden;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
 }
 
 #nav {
@@ -54,6 +59,5 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 40px;
 }
 </style>

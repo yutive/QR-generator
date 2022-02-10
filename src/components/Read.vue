@@ -99,4 +99,10 @@ input {
 #submit:hover {
   opacity: 0.8;
 }
+
+@media (max-width: 800px) {
+  h1{
+    margin: 3vh;
+  }
+}
 </style>
