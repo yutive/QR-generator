@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import firebase from '../../node_modules/@firebase/app/';
+import firebase from 'firebase/compat/app';
 export default {
   name: "Read",
   data() {
