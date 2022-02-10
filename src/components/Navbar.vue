@@ -39,15 +39,16 @@ export default {
   button  {
     border: none;
     cursor: pointer;
-    background: #04aa6d none;
+    background: #f29559;
     color: white;
     padding: 7px 10px;
     margin: 4px 0;
     width: 70px;
   }
-  li:hover {
-    opacity: 0.8;
+  button:hover {
+    background-color: #F2A568;
   }
+
 
   ul {
     justify-content: center;

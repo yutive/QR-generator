@@ -57,19 +57,19 @@ html {
   box-sizing: border-box;
 }
 a:link {
-  color: #99d096;
+  color: #F29559;
   background-color: transparent;
   text-decoration: none;
 }
 
 a:visited {
-  color: #99d096;
+  color: #F29559;
   background-color: transparent;
   text-decoration: none;
 }
 
 a:hover {
-  color: #04aa6d ;
+  color: #f2b576 ;
   background-color: transparent;
   text-decoration: underline;
 }
@@ -80,7 +80,7 @@ a:hover {
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 8px;
 }
 

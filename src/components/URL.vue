@@ -1,6 +1,6 @@
 <template>
   <div class="url">
-    <h2>QR generator</h2>
+    <h1>QR generator</h1>
     <input
         class="input"
         type="text"
@@ -89,6 +89,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+
+
 h1 {
   color: #111;
   font-family: "Helvetica Neue", sans-serif;
@@ -116,11 +118,11 @@ input {
 }
 
 input:hover{
-  border-color: rgba(4, 170, 109, 0.4);
+  border-color: #f29559;
 }
 
 select:hover{
-  border-color: rgba(4, 170, 109, 0.4);
+  border-color: #f29559;
 }
 
 .color input{
@@ -161,7 +163,6 @@ img {
 .qr-code {
   width: 250px;
   height: 250px;
-  background-color: grey;
   margin-left: 20px;
 }
 
