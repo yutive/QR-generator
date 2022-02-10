@@ -2,69 +2,58 @@
   <div>
     <h1>QR-read</h1>
       <p>Choose QR code image to read/scan:</p>
-      <input
-          type="file"
-          name="file"
-          @change="previewImage"
-          accept="image/*"
-      />
-    <div>
-      <p>Progress: {{uploadValue.toFixed()+"%"}}
-        <progress id="progress" :value="uploadValue" max="100" ></progress>
-      </p>
-    </div>
-    <div v-if="imageData!=null">
-      <img class="preview" :src="picture"><br>
-      <button @click="onUpload">Upload</button>
-    </div>
+    <button @click="onPickFile">Upload File</button>
+    <input
+        type="file"
+        name="file"
+        ref="fileInput"
+        style="display: none"
+        accept="image/*"
+        @change="onFilePicked"
+    />
+    <br>
     <button id="submit" @click="onChangeFile()">Read QR code</button>
+    <img :src="imageURL" alt="">
   </div>
 
 </template>
 
 <script>
-import firebase from 'firebase/compat/app';
 export default {
   name: "Read",
   data() {
     return {
-      imageData: null,
-      picture: null,
-      uploadValue: 0
+      imageURL: "",
+      image: null
     }
   },
   methods: {
-    previewImage(event) {
-      this.uploadValue=0;
-      this.picture=null;
-      this.imageData = event.target.files[0];
+    onPickFile() {
+      this.$refs.fileInput.click();
     },
-
-    onUpload(){
-      this.picture=null;
-      const storageRef=firebase.storage().ref(`${this.imageData.name}`).put(this.imageData);
-      storageRef.on(`state_changed`,snapshot=>{
-            this.uploadValue = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
-          }, error=>{console.log(error.message)},
-          ()=>{this.uploadValue=100;
-            storageRef.snapshot.ref.getDownloadURL().then((url)=>{
-              this.picture =url;
-            });
-          }
-      );
+    onFilePicked(event) {
+      const files = event.target.files;
+      let filename = files[0].name;
+      if (filename.lastIndexOf('.') <= 0) {
+        return alert('Please add a valid file!');
+      }
+      const fileReader = new FileReader();
+      fileReader.addEventListener('load', () => {
+        this.imageURL = fileReader.result;
+      });
+      fileReader.readAsDataURL(files[0]);
+      this.image = files[0];
     },
-   onChangeFile() {
-     let fileURL = encodeURIComponent('https://api.qrserver.com/v1/create-qr-code/?margin=0&data=google.com&color=')
-     const basicURL = "http://api.qrserver.com/v1/read-qr-code/?fileurl=";
-     fetch(basicURL + fileURL).then(response =>{
-       return response.json();
-     }).then(data =>{
-       console.log(data);
-       let result = data[0].symbol[0].data;
-       console.log(result);
-       console.log(basicURL + fileURL)
-     })
-   }
+    onChangeFile() {
+      let fileURL = encodeURIComponent('https://api.qrserver.com/v1/create-qr-code/?margin=0&data=google.com&color=');
+      const basicURL = "http://api.qrserver.com/v1/read-qr-code/?fileurl=";
+      fetch(basicURL + fileURL).then(response => {
+        return response.json();
+      }).then(data => {
+        let result = data[0].symbol[0].data;
+        console.log(result);
+      })
+    }
   }
 }
 </script>
