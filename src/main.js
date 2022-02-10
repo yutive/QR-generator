@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import firebase from 'firebase';
+import firebase from '../node_modules/@firebase/app/';
 
 
 Vue.config.productionTip = false
