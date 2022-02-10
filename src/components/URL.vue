@@ -13,11 +13,20 @@
       <div class="options" v-if="picture">
         <form>
           <div class="color">
+            <label for="color" class="description">Color:</label>
             <input
                 type="color"
                 v-model="color"
                 name="color"
                 id="color"
+                @change="createQR()"
+            >
+            <label for="bgColor" class="description">Backgroundcolor:</label>
+            <input
+                type="color"
+                v-model="bgColor"
+                name="bgColor"
+                id="bgColor"
                 @change="createQR()"
             >
           </div>
@@ -55,6 +64,7 @@ export default {
       url: "",
       picture: "",
       color: "",
+      bgColor: "#fffffff",
       fileFormats: [
         {name: "PNG", id: 1},
         {name: "JPG", id: 2},
@@ -73,7 +83,7 @@ export default {
         this.picture = false;
         return
       }
-      this.picture = `${api_url}data=${this.url}&color=${this.color.substring(1)}&format=${this.selectedFileFormat.toLowerCase()}`;
+      this.picture = `${api_url}data=${this.url}&color=${this.color.substring(1)}&format=${this.selectedFileFormat.toLowerCase()}&bgcolor=${this.bgColor.substring(1)}`;
       window.urlState = this.url;
     }
   },
@@ -88,6 +98,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+.description {
+
+}
 
 h1 {
   margin-top:71.44px;
@@ -117,11 +131,26 @@ select:hover{
   border-color: #f29559;
 }
 
+.color {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". ."
+    ". .";
+}
+
 .color input{
   width: 40px;
   height: 40px;
   padding: 10px;
+  margin-left: auto;
 
+}
+
+.description{
+  margin:auto;
 }
 
 .lowerFlex {
