@@ -50,14 +50,15 @@ export default {
     color: white;
     padding: 7px 10px;
     margin: 4px 0;
-    width: 10vh;
+    width: 90px;
+    font-size: 18px;
   }
   button:hover {
     background-color: #F2A568;
   }
 
   #darkMode {
-    margin-right: 10px;
+    margin-right: 20px;
   }
 
 @media (max-width: 800px) {
