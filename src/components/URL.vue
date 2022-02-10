@@ -19,28 +19,12 @@
               id="color"
               @change="createQR()"
           >
-          <label for="color">Farbe</label><br><br>
-          <input
-              type="radio"
-              name="options"
-              id="png"
-              @change="createQR()"
-          >
-          <label for="png">PNG</label><br>
-          <input
-              type="radio"
-              name="options"
-              id="jpg"
-              @change="createQR()"
-          >
-          <label for="jpg">JPG</label><br>
-          <input
-              type="radio"
-              name="options"
-              id="svg"
-              @change="createQR()"
-          >
-          <label for="svg">SVG</label>
+          <div id="app">
+            <select class="form-control" @change="changeFileFormat($event)">
+              <option value="" selected disabled>{{ selectedFileFormat }}</option>
+              <option v-for="fileFormat in fileFormats" :value="fileFormat.id" :key="fileFormat.id">{{ fileFormat.name }}</option>
+            </select>
+          </div>
         </form>
       </div>
       <div class="qr-code" v-if="picture">
@@ -68,16 +52,26 @@ export default {
     return {
       url: "",
       picture: "",
-      color: ""
+      color: "",
+      fileFormats: [
+        {name: "PNG", id: 1},
+        {name: "JPG", id: 2},
+        {name: "SVG", id: 3},
+      ],
+      selectedFileFormat: "PNG"
     }
   },
   methods: {
+    changeFileFormat(event) {
+      this.selectedFileFormat = event.target.options[event.target.options.selectedIndex].text;
+      this.createQR();
+    },
     createQR() {
       if (this.url === "") {
         this.picture = false;
         return
       }
-      this.picture = `${api_url}data=${this.url}&color=${this.color.substring(1)}`;
+      this.picture = `${api_url}data=${this.url}&color=${this.color.substring(1)}&format=${this.selectedFileFormat.toLowerCase()}`;
       window.urlState = this.url;
     }
   },
@@ -85,7 +79,6 @@ export default {
     this.url = window.urlState || "";
     this.createQR();
   }
-
 };
 
 
