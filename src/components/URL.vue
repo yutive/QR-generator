@@ -12,13 +12,15 @@
     <div class="lowerFlex">
       <div class="options" v-if="picture">
         <form>
-          <input
-              type="color"
-              v-model="color"
-              name="color"
-              id="color"
-              @change="createQR()"
-          >
+          <div class="color">
+            <input
+                type="color"
+                v-model="color"
+                name="color"
+                id="color"
+                @change="createQR()"
+            >
+          </div>
           <div id="app">
             <select class="form-control" @change="changeFileFormat($event)">
               <option value="" selected disabled>{{ selectedFileFormat }}</option>
@@ -103,12 +105,34 @@ h1 {
 }
 
 input {
-  width: 45%;
+  width: 60%;
   padding: 6px 10px;
   margin: 4px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 1px solid #bdbcbc;
   box-sizing: border-box;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+input:hover{
+  border-color: rgba(4, 170, 109, 0.4);
+}
+
+select:hover{
+  border-color: rgba(4, 170, 109, 0.4);
+}
+
+.color input{
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+
+}
+
+.lowerFlex {
+  margin: 30px;
+
 }
 
 button {

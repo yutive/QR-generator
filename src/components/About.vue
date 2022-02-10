@@ -115,6 +115,7 @@ a:hover {
   text-align: center;
   cursor: pointer;
   width: 100%;
+  border-radius: 25px;
 }
 
 .button:hover {

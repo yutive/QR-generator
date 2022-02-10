@@ -2,13 +2,13 @@
   <div>
     <ul>
       <li>
-        <button @click="$emit('change', 'generate')">Generate</button>
+        <button @click="$emit('change', 'generate')" id="left">Generate</button>
       </li>
       <li>
         <button @click="$emit('change', 'read')">Read</button>
       </li>
       <li>
-        <button @click="$emit('change', 'about')">About</button>
+        <button @click="$emit('change', 'about')" id="right">About</button>
       </li>
     </ul>
   </div>
@@ -21,6 +21,14 @@ export default {
 </script>
 
 <style scoped>
+
+  #right {
+    border-radius: 0px 25px 25px 0px;
+  }
+
+  #left{
+    border-radius:25px 0px 0px 25px;
+  }
 
   ul {
     display: flex;
