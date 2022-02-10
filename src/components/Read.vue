@@ -4,10 +4,10 @@
       <p>Choose QR code image to read/scan:</p>
       <input
           type="file"
-          @change="onChangeFile($event)"
+          v-on:change="previewFiles(this.files)"
           name="file"
       />
-      <button id="submit">Read QR code</button>
+      <button id="submit" @click="onChangeFile()">Read QR code</button>
   </div>
 
 </template>
@@ -16,20 +16,19 @@
 export default {
   name: "Read",
   methods: {
-   onChangeFile(event) {
-    let formData = new FormData();
-     formData.append("MAX_FILE_SIZE", "1048576")
-    formData.append('file',event.target.files[0])
-     fetch('http://localhost:8080/v1/read-qr-code/', {
-      method:'POST',
-       headers: {
-        'Accept': 'application/json',
-         'Content-Type': 'multipart/form-data'
-       },
-       body: formData
-     })
-     .then(function (response){
-       console.log(response)
+    previewFiles(files) {
+      console.log(files);
+    },
+   onChangeFile() {
+     let fileURL = encodeURIComponent('https://api.qrserver.com/v1/create-qr-code/?margin=0&data=google.com&color=')
+     const basicURL = "http://api.qrserver.com/v1/read-qr-code/?fileurl=";
+     fetch(basicURL + fileURL).then(response =>{
+       return response.json();
+     }).then(data =>{
+       console.log(data);
+       let result = data[0].symbol[0].data;
+       console.log(result);
+       console.log(basicURL + fileURL)
      })
    }
   }
