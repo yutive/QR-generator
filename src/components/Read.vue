@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>QR-read</h1>
-    <p>Paste the URL for the QR Code here:</p>
+    <p>Paste the URL to read the QR-code:</p>
     <input
         class="input"
         type="text"
@@ -14,7 +14,9 @@
       <h3>{{ result }}</h3>
     </div>
     <div v-if="isLink">
-      <a :href="result" target="_blank">Link öffnen</a>
+      <a :href="result" target="_blank">
+        <button id="openLink">Link öffnen</button>
+      </a>
     </div>
   </div>
 
@@ -74,7 +76,7 @@ h1 {
 }
 
 input {
-  width: 40%;
+  width: 60%;
   padding: 6px 10px;
   margin: 4px 0;
   display: inline-block;
@@ -88,16 +90,8 @@ input:hover{
   border-color: #f29559;
 }
 
-#submit{
-  border: none;
-  cursor: pointer;
-  background-color: #04aa6d;
-  color: white;
-  padding: 7px 10px;
-  margin: 4px 0;
-  width: auto;
+#openLink {
+  width: 20%;
 }
-#submit:hover {
-  opacity: 0.8;
-}
+
 </style>

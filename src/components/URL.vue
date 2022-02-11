@@ -1,6 +1,7 @@
 <template>
   <div class="url">
     <h1>QR generator</h1>
+    <p>Paste the URL to create a QR-code:</p>
     <input
         class="input"
         type="text"
