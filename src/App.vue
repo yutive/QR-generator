@@ -1,5 +1,5 @@
 <template>
-  <div id="app" v-bind:class="{ darkMode: isDarkModeEnabled }">
+  <div id="app">
       <navbar id="nav" v-on:change="navigate" v-on:changeMode="changeMode"/><br>
     <urlToPic v-if="this.page==='generate'"/>
     <read v-if="this.page==='read'"/>
@@ -33,7 +33,7 @@ export default {
       this.page = page;
     },
     changeMode(mode) {
-      this.isDarkModeEnabled = mode;
+      document.body.classList.toggle("darkMode", mode)
     }
   }
 }
@@ -44,11 +44,22 @@ export default {
 html  {
   overflow: hidden;
 }
+
+
 body {
   overflow: hidden;
   margin-top: 0;
   margin-left: 0;
   margin-right: 0;
+  background-color: white;
+}
+
+body.darkMode  {
+  overflow: hidden;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+  background-color: #2e3440;
 }
 
 #nav {
@@ -61,6 +72,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.darkMode #app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #78808f;
 }
 
 

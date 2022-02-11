@@ -86,7 +86,7 @@ export default {
       },
       set(newValue) {
         this.currentState = newValue;
-        this.$emit('changem', newValue);
+        this.$emit( newValue);
       }
     }
   }
@@ -112,11 +112,11 @@ export default {
   }
 
 .darkMode ul {
-  background-color: #2f2b63;
+  background-color: #3b4252;
 }
 .darkMode button {
-  background: #2f2b63;
-  color: black;
+  background: #3b4252;
+  color: #78808f;
 }
   button  {
     border: none;
@@ -131,6 +131,10 @@ export default {
   button:hover {
     background-color: #F2A568;
   }
+
+.darkMode button:hover {
+  background-color: #434C5E;
+}
 
   .darkModeButton {
     padding-left:  90%;

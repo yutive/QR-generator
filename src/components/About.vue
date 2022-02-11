@@ -71,6 +71,18 @@ a:hover {
   text-decoration: underline;
 }
 
+a:visited {
+  color: #F29559;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f2b576 ;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
 .column {
   float: left;
   width: 33.3%;
@@ -86,6 +98,13 @@ a:hover {
   text-align: center;
   background-color: #474e5d;
   color: white;
+}
+
+.darkMode .about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #aaaaaa;
+  color: #474747;
 }
 
 .container {
