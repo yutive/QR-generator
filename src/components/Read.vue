@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>QR-read</h1>
+    <h1>QR-Code Reader</h1>
     <p>Paste the URL to read the QR-code:</p>
     <input
         class="input"

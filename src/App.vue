@@ -41,13 +41,7 @@ export default {
 
 <style>
 
-html  {
-  overflow: hidden;
-}
-
-
 body {
-  overflow: hidden;
   margin-top: 0;
   margin-left: 0;
   margin-right: 0;
@@ -55,7 +49,6 @@ body {
 }
 
 body.darkMode  {
-  overflow: hidden;
   margin-top: 0;
   margin-left: 0;
   margin-right: 0;
