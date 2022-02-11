@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       page: "generate",
-      isDarkModeEnabled: true
+      isDarkModeEnabled: false
     }
   },
   methods: {
