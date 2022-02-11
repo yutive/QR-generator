@@ -1,19 +1,21 @@
 <template>
   <div>
     <h1>QR-read</h1>
-      <p>Choose QR code image to read/scan:</p>
-    <button @click="onPickFile">Upload File</button>
+    <p>paste the URL for the QR Code here:</p>
     <input
-        type="file"
-        name="file"
-        ref="fileInput"
-        style="display: none"
-        accept="image/*"
-        @change="onFilePicked"
-    />
-    <br>
+        class="input"
+        type="text"
+        v-model="url"
+        placeholder="https://"
+    /><br>
     <button id="submit" @click="onChangeFile()">Read QR code</button>
-    <img :src="imageURL" alt="">
+    <div v-if="result">
+      <p>Der Inhalt Ihres QR-Codes</p>
+      <h3>{{ result }}</h3>
+    </div>
+    <div v-if="isLink">
+      <a :href="result" target="_blank">Link öffnen</a>
+    </div>
   </div>
 
 </template>
@@ -23,35 +25,25 @@ export default {
   name: "Read",
   data() {
     return {
-      imageURL: "",
-      image: null
+      url: "",
+      result: "",
+      isLink: false
     }
   },
   methods: {
-    onPickFile() {
-      this.$refs.fileInput.click();
-    },
-    onFilePicked(event) {
-      const files = event.target.files;
-      let filename = files[0].name;
-      if (filename.lastIndexOf('.') <= 0) {
-        return alert('Please add a valid file!');
-      }
-      const fileReader = new FileReader();
-      fileReader.addEventListener('load', () => {
-        this.imageURL = fileReader.result;
-      });
-      fileReader.readAsDataURL(files[0]);
-      this.image = files[0];
-    },
     onChangeFile() {
-      let fileURL = encodeURIComponent('https://api.qrserver.com/v1/create-qr-code/?margin=0&data=google.com&color=');
+      const pattern = new RegExp('^(https|http):\\/\\/');
+
+      let fileURL = encodeURIComponent(this.url);
       const basicURL = "http://api.qrserver.com/v1/read-qr-code/?fileurl=";
       fetch(basicURL + fileURL).then(response => {
         return response.json();
       }).then(data => {
-        let result = data[0].symbol[0].data;
-        console.log(result);
+        this.result = data[0].symbol[0].data;
+        console.log(this.result);
+        if (pattern.test(this.result)) {
+          this.isLink = true;
+        }
       })
     }
   }
@@ -68,12 +60,18 @@ h1 {
 }
 
 input {
-  color: #2c3e50;
-  width: auto;
-  padding: 4px 10px;
+  width: 40%;
+  padding: 6px 10px;
   margin: 4px 0;
   display: inline-block;
+  border: 1px solid #bdbcbc;
   box-sizing: border-box;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+input:hover{
+  border-color: #f29559;
 }
 
 #submit{
