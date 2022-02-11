@@ -48,14 +48,11 @@ export default {
 </script>
 
 <style scoped>
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
+
+h2{
+  padding-top: 15px;
 }
 
-html {
-  box-sizing: border-box;
-}
 a:link {
   color: #F29559;
   background-color: transparent;

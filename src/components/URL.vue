@@ -15,6 +15,7 @@
           <div class="color">
             <label for="color" class="description">Color:</label>
             <input
+                class="column"
                 type="color"
                 v-model="color"
                 name="color"
@@ -23,6 +24,7 @@
             >
             <label for="bgColor" class="description">Backgroundcolor:</label>
             <input
+                class="column"
                 type="color"
                 v-model="bgColor"
                 name="bgColor"
@@ -30,8 +32,8 @@
                 @change="createQR()"
             >
           </div>
-          <div id="app">
-            <select class="form-control" @change="changeFileFormat($event)">
+          <div >
+            <select class="column" @change="changeFileFormat($event)" >
               <option value="" selected disabled>{{ selectedFileFormat }}</option>
               <option v-for="fileFormat in fileFormats" :value="fileFormat.id" :key="fileFormat.id">{{ fileFormat.name }}</option>
             </select>
@@ -41,6 +43,7 @@
       <div class="qr-code" v-if="picture">
         <a :href=picture target="_blank">
           <img
+              class="column"
               :src=picture
               width="250px"
               alt="QR-code picture"
@@ -50,8 +53,6 @@
         </a>
       </div>
     </div>
-
-
   </div>
 </template>
 
@@ -99,12 +100,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-.description {
-
-}
-
 h1 {
-  margin-top:71.44px;
+  margin:5vh;
 }
 
 #qrCode {
@@ -135,7 +132,7 @@ select:hover{
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  gap: 0px 0px;
+  gap: 0 0;
   grid-template-areas:
     ". ."
     ". .";
@@ -155,7 +152,7 @@ select:hover{
 
 .lowerFlex {
   margin: 30px;
-
+  display: flex;
 }
 
 button {
@@ -177,6 +174,13 @@ button:hover {
   opacity: 0.8;
 }
 
+.lowerFlex {
+  display: flex;
+  justify-content: center;
+  margin: 40px;
+  padding-top: 30px;
+}
+
 img {
   align-items: center;
 }
@@ -191,10 +195,19 @@ img {
   margin-right: 20px;
 }
 
-.lowerFlex {
-  display: flex;
-  justify-content: center;
-  margin: 40px;
-  padding-top: 30px;
+@media screen and (max-width: 800px) {
+  .lowerFlex {
+    flex-direction: column;
+    padding-top: 0;
+  }
+  form{
+    margin-bottom: 20px;
+  }
+  .qr-code{
+    justify-content: center;
+    width:100%;
+    margin-left:0;
+  }
 }
+
 </style>
