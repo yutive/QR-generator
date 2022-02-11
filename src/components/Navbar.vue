@@ -16,15 +16,18 @@
         </li>
       </ul>
     </div>
+    <div class="darkMode">
       <div class="darkModeButton">
         <label :for="id + '_button'" :class="{'active': isActive}" class="toggle__button">
           <span v-if="isActive" class="toggle__label">{{ enableText }}</span>
           <span v-if="! isActive" class="toggle__label">{{ disabledText }}</span>
 
-          <input type="checkbox" :disabled="disabled" :id="id + '_button'" v-model="checkedValue">
+          <input type="checkbox" :disabled="disabled" :id="id + '_button'" v-model="checkedValue" v-on:change="$emit('changeMode', checkedValue)">
           <span class="toggle__switch"></span>
         </label>
       </div>
+    </div>
+
   </div>
 </template>
 
@@ -83,14 +86,14 @@ export default {
       },
       set(newValue) {
         this.currentState = newValue;
-        this.$emit('change', newValue);
+        this.$emit('changem', newValue);
       }
     }
   }
 }
 </script>
 
-<style scoped>
+<style>
 
 .burger img{
   width: 7vh ;
@@ -107,6 +110,14 @@ export default {
     margin: 0;
     background-color: #f29559;
   }
+
+.darkMode ul {
+  background-color: #2f2b63;
+}
+.darkMode button {
+  background: #2f2b63;
+  color: black;
+}
   button  {
     border: none;
     cursor: pointer;

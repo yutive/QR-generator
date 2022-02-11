@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-      <navbar id="nav" v-on:change="navigate"/><br>
+  <div id="app" v-bind:class="{ darkMode: isDarkModeEnabled }">
+      <navbar id="nav" v-on:change="navigate" v-on:changeMode="changeMode"/><br>
     <urlToPic v-if="this.page==='generate'"/>
     <read v-if="this.page==='read'"/>
     <about v-if="this.page==='about'"/>
@@ -24,12 +24,16 @@ export default {
   },
   data() {
     return {
-      page: "generate"
+      page: "generate",
+      isDarkModeEnabled: true
     }
   },
   methods: {
     navigate(page) {
       this.page = page;
+    },
+    changeMode(mode) {
+      this.isDarkModeEnabled = mode;
     }
   }
 }
@@ -58,4 +62,7 @@ body {
   text-align: center;
   color: #2c3e50;
 }
+
+
+
 </style>
