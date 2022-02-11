@@ -155,25 +155,6 @@ select:hover{
   display: flex;
 }
 
-button {
-  border: none;
-  cursor: pointer;
-  background-color: #04aa6d;
-  color: white;
-  padding: 7px 10px;
-  margin: 4px 0;
-  width: 70px;
-}
-
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.8;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
 .lowerFlex {
   display: flex;
   justify-content: center;
