@@ -103,8 +103,8 @@ a:hover {
 .darkMode .about-section {
   padding: 50px;
   text-align: center;
-  background-color: #aaaaaa;
-  color: #474747;
+  background-color: #434c5e;
+  color: #78808f;
 }
 
 .container {
@@ -122,7 +122,7 @@ a:hover {
 }
 
 .button {
-  border: none;
+  border: 1px solid black;
   outline: 0;
   display: inline-block;
   padding: 8px;
@@ -136,6 +136,24 @@ a:hover {
 
 .button:hover {
   background-color: #555;
+}
+
+.darkMode .button {
+  border: 1px solid black;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 25px;
+}
+
+.darkMode .button:hover {
+  background-color: #555;
+  border-color: rgba(242, 165, 104, 0.58);
 }
 
 @media screen and (max-width: 650px) {

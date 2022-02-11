@@ -1,16 +1,16 @@
 <template>
   <div>
     <h1>QR-read</h1>
-    <p>paste the URL for the QR Code here:</p>
+    <p>Paste the URL for the QR Code here:</p>
     <input
         class="input"
         type="text"
         v-model="url"
         placeholder="https://"
+        @input="onChangeFile()"
     /><br>
-    <button id="submit" @click="onChangeFile()">Read QR code</button>
-    <div v-if="result">
-      <p>Der Inhalt Ihres QR-Codes</p>
+    <div>
+      <p>{{ message }}</p>
       <h3>{{ result }}</h3>
     </div>
     <div v-if="isLink">
@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       url: "",
+      message: "",
       result: "",
       isLink: false
     }
@@ -33,16 +34,29 @@ export default {
   methods: {
     onChangeFile() {
       const pattern = new RegExp('^(https|http):\\/\\/');
-
       let fileURL = encodeURIComponent(this.url);
       const basicURL = "http://api.qrserver.com/v1/read-qr-code/?fileurl=";
+      if (!pattern.test(this.url) || this.url === "") {
+        if (!pattern.test(this.url) && this.url !== "") {
+          this.message = "This is an invalid url !"
+          this.result = "";
+          return
+        }
+        if (this.url === ""){
+          this.message = "";
+          this.result = "";
+          return;
+        }
+      }
+      this.message = "scanning URL..."
       fetch(basicURL + fileURL).then(response => {
         return response.json();
       }).then(data => {
-        this.result = data[0].symbol[0].data;
-        console.log(this.result);
-        if (pattern.test(this.result)) {
-          this.isLink = true;
+          this.result = data[0].symbol[0].data;
+          this.message = "";
+          console.log(this.result);
+          if (pattern.test(this.result)) {
+            this.isLink = true;
         }
       })
     }

@@ -59,7 +59,7 @@ export default {
   },
   data() {
     return {
-      currentState: this.defaultState
+      currentState: this.defaultState,
     }
   },
   watch: {
@@ -117,6 +117,9 @@ export default {
 .darkMode button {
   background: #3b4252;
   color: #78808f;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #3b4252;
 }
   button  {
     border: none;
@@ -134,6 +137,7 @@ export default {
 
 .darkMode button:hover {
   background-color: #434C5E;
+  border-color:#F2A568 ;
 }
 
   .darkModeButton {
